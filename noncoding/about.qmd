@@ -10,7 +10,7 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/aidan-cruickshank-b977b11b5/
-    - icon: flash
+    - icon: flask
       text: Manguso Lab
       href: https://www.mangusolab.org/
 ---
