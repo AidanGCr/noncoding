@@ -19,10 +19,10 @@ Hi, my name is Aidan Cruickshank - thank you for visiting my site! I am currentl
 
 ## Education
 
-McGill University | Montreal, QC, Canada
+McGill University | Montreal, QC, Canada |
 MSc in Human Genetics (Thesis) | Sept 2022 - May 2026
 
-McGill University | Montreal, QC, Canada
+McGill University | Montreal, QC, Canada |
 BSc in Biochemistry (major) and Computer Science (minor) | Sept 2018 - Jun 2022
 
 ## Experience
