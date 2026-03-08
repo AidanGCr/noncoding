@@ -4,16 +4,33 @@ project:
 website:
   title: "Noncoding Blog"
   navbar:
+    tools:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/aidan-cruickshank-b977b11b5/
+      - icon: github
+        menu: 
+          - text: Source Code
+            href: https://github.com/AidanGCr/noncoding
+          - text: Report a Bug
+            href: https://github.com/AidanGCr/noncoding/issues
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+  page-footer:
+  left: "By Aidan Cruickshank" 
+  right: 
+    - icon: github
+      href: https://github.com/AidanGCr
+    - icon: linkedin
+      href: https://www.linkedin.com/in/aidan-cruickshank-b977b11b5/
 
 format:
   html:
+    respect-user-color-scheme: true
     theme:
-      - cosmo
-      - brand
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
 
