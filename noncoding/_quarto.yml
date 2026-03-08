@@ -18,12 +18,12 @@ website:
         text: Home
       - about.qmd
   page-footer:
-  left: "By Aidan Cruickshank" 
-  right: 
-    - icon: github
-      href: https://github.com/AidanGCr
-    - icon: linkedin
-      href: https://www.linkedin.com/in/aidan-cruickshank-b977b11b5/
+    left: "By Aidan Cruickshank" 
+    right: 
+      - icon: github
+        href: https://github.com/AidanGCr
+      - icon: linkedin
+        href: https://www.linkedin.com/in/aidan-cruickshank-b977b11b5/
 
 format:
   html:
