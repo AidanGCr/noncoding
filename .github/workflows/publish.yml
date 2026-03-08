@@ -1,3 +1,4 @@
+cat > /home/aidancruickshank/projects/noncoding/.github/workflows/publish.yml << 'EOF'
 on:
   push:
     branches: main
@@ -11,5 +12,7 @@ jobs:
       - uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          path: noncoding
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+EOF
