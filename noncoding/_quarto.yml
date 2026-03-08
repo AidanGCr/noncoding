@@ -17,7 +17,7 @@ website:
       - href: index.qmd
         text: Home
       - href: about.qmd
-      - text: About
+        text: About
   page-footer:
     left: "By Aidan Cruickshank" 
     right: 
