@@ -1,1 +1,1 @@
-Sitemap: https://AidanGCr.github.io/noncoding/sitemap.xml
+Sitemap: https://noncoding.io/sitemap.xml
