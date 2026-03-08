@@ -1,5 +1,31 @@
 ---
 title: "About"
+about: 
+  template: jolla
+  image: profile.jpg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/AidanGCr
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/aidan-cruickshank-b977b11b5/
+    - icon: flash
+      text: Manguso Lab
+      href: https://www.mangusolab.org/
 ---
 
-About this site
+Hi, my name is Aidan Cruickshank - thank you for visiting my site! I am currently a computational associate at the Broad Institute of Harvard and MIT in the Manguso Lab (Harvard and MGH affiliated). Our lab focuses on the discovery and functional characterization of new immunotherapy targets using a variety of technologies including *in vivo* CRISPR screens, Perturbseq, multimodal single cell sequencing, as well as other new and emerging technologies. While working in the Manguso lab, I simulataneously completed my MSc in Human Genetics at McGill University where my focus was on the application of whole genome sequencing to breast cancer patients in a chohort recruited through the RVH Breast Clinic. This was completed as part of a collaboration between the Tonin lab at the RI-MUHC and the Advanced Genomic Technologies Lab (Ragoussis lab) at the Institute of Genomic Medicine. 
+
+## Education
+
+McGill University | Montreal, QC, Canada
+MSc in Human Genetics (Thesis) | Sept 2022 - May 2026
+
+McGill University | Montreal, QC, Canada
+BSc in Biochemistry (major) and Computer Science (minor) | Sept 2018 - Jun 2022
+
+## Experience
+
+Computational Associate | Broad Institute of Harvard and MIT - Manguso Lab | Aug 2024 - Present
+
