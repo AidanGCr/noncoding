@@ -4,13 +4,27 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "Hi, my name is Aidan Cruickshank - thank you for visiting my site! I am currently a computational associate at the Broad Institute of Harvard and MIT in the Manguso Lab (Harvard and MGH affiliated). Our lab focuses on the discovery and functional characterization of new immunotherapy targets using a variety of technologies including in vivo CRISPR screens, Perturbseq, multimodal single cell sequencing, as well as other new and emerging technologies. While working in the Manguso lab, I simulataneously completed my MSc in Human Genetics at McGill University where my focus was on the application of whole genome sequencing to breast cancer patients in a chohort recruited through the RVH Breast Clinic. This was completed as part of a collaboration between the Tonin lab at the RI-MUHC and the Advanced Genomic Technologies Lab (Ragoussis lab) at the Institute of Genomic Medicine."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\nMcGill University | Montreal, QC, Canada MSc in Human Genetics (Thesis) | Sept 2022 - May 2026\nMcGill University | Montreal, QC, Canada BSc in Biochemistry (major) and Computer Science (minor) | Sept 2018 - Jun 2022"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About",
+    "section": "Experience",
+    "text": "Experience\nComputational Associate | Broad Institute of Harvard and MIT - Manguso Lab | Aug 2024 - Present"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Noncoding Blog",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Welcome to my personal blog! The goal of this blog is to have an outlet where I can put ideas and thoughts that are too small to be a published, or too under-cooked to be very widely distributed. The name of the blog was chosen to reflect this goal. Noncoding regions of the human genome are thought to be perhaps underinvestigated when considering their potential importance for cellular processes. For example, they house many pivotal regions such as cis-regulatory elements which are thought to strongly guide gene regulatory programs. However, in variant classificaition and prioritization, noncoding variants are often largely overlooked. As such, maybe the articles in this blog will function similarly - I do not know how useful the information may be, but perhaps it will be of outsizsd importance for some people, at some point!\nThe main focus of this blog will be topics relating to bioinformatics, my main area of expertise. Most articles will revolve around technologies and methods relevant to genomics, cancer biology, immunology, and cancer immunology, with maybe a smattering of population genetics and personalized genomics in healthcare settings. Occasionally I might write about other things like video games, books, movies, or other hobbies. Thanks for visiting!"
   }
 ]
