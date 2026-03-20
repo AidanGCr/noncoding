@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aidan Cruickshank">
+<meta name="dcterms.date" content="2026-03-08">
+<meta name="description" content="A walkthrough of a publication ready CRISPR screening pipeline using public data.">
 
-<title>Noncoding Blog</title>
+<title>In Vivo CRISPR Screens - Analysis Walkthrough with Explanations – Noncoding Blog</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,29 +29,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a8da12e74b29c2e7b17644f84b91567b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-aa2c5b05260b8b4637d981a92a35b106.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-6576ed406b7a02bc81cbf59141ea24d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-aa2c5b05260b8b4637d981a92a35b106.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-a8da12e74b29c2e7b17644f84b91567b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-aa2c5b05260b8b4637d981a92a35b106.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-6576ed406b7a02bc81cbf59141ea24d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-aa2c5b05260b8b4637d981a92a35b106.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,67 +77,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -317,7 +260,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Noncoding Blog</span>
     </a>
   </div>
@@ -328,11 +271,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -360,26 +303,56 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q1JJU1BS">CRISPR <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0aG9kcw==">methods <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#in-vivo-crispr-screens---analysis-walkthrough-with-explanations" id="toc-in-vivo-crispr-screens---analysis-walkthrough-with-explanations" class="nav-link active" data-scroll-target="#in-vivo-crispr-screens---analysis-walkthrough-with-explanations">In Vivo CRISPR Screens - Analysis Walkthrough with Explanations</a>
+  <ul class="collapse">
+  <li><a href="#step-1-data-collection" id="toc-step-1-data-collection" class="nav-link" data-scroll-target="#step-1-data-collection">Step 1: Data Collection</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Noncoding Blog</h1>
+<h1 class="title">In Vivo CRISPR Screens - Analysis Walkthrough with Explanations</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">methods</div>
+    <div class="quarto-category">CRISPR</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A walkthrough of a publication ready CRISPR screening pipeline using public data.
+  </div>
 </div>
 
 
+<div class="quarto-title-meta">
 
-<div class="quarto-title-meta column-page-left">
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aidan Cruickshank </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 8, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -389,83 +362,33 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to my personal blog! The goal of this blog is to have an outlet where I can put ideas and thoughts that are too small to be a published, or too under-cooked to be very widely distributed. The name of the blog was chosen to reflect this goal. Noncoding regions of the human genome are thought to be perhaps underinvestigated when considering their potential importance for cellular processes. For example, they house many pivotal regions such as cis-regulatory elements which are thought to strongly guide gene regulatory programs. However, in variant classification and prioritization, noncoding variants are often largely overlooked. As such, maybe the articles in this blog will function similarly - I do not know how useful the information may be, but perhaps it will be of outsized importance for some people, at some point!</p>
-<p>The main focus of this blog will be topics relating to bioinformatics, my main area of expertise. Most articles will revolve around technologies and methods relevant to genomics, cancer biology, immunology, and cancer immunology, with maybe a smattering of population genetics and personalized genomics in healthcare settings. Occasionally I might write about other things like video games, books, movies, or other hobbies. Thanks for visiting!</p>
-<div id="fig-banner" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-banner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="cres.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-banner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: An overview of CREs, their association with gene expression, and epigenetic features which correlate with their presence - adapted from <a href="https://www.nature.com/articles/s41576-022-00509-1#Abs1">Preissl, Gaulton, &amp; Ren, <em>Nat Rev Genet</em> (2023)</a>
-</figcaption>
+<section id="in-vivo-crispr-screens---analysis-walkthrough-with-explanations" class="level1">
+<h1>In Vivo CRISPR Screens - Analysis Walkthrough with Explanations</h1>
+<p>In recent years, <em>in vivo</em> CRISPR screens have become an excellent tool for the unbiased discovery of putative immunotherapy targets. The basic concept of such screens is that differing levels of immune pressure in mice xenograft models will selectively enrich or deplete specific genome edits which have been introduced through the transfection of a pool of CRISPR sgRNAs. This pool of guides constitutes a CRISPR screen library, a set of guides which will introduce the aforementioned edits into the cancer cell line to be engrafted. If the introduced edits are predicted to cause serious damage to the target genes, then the genes may be considered “knocked down” and the screen is called a CRISPRko screen. Alternative variations exist such as CRISPR “activation” (CRISPRa) screens, where transcription factors are pulled towards the promoter/transcription start site of the target genes, thus enhancing expression.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./screening_concept.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 1. Screening concept overview.</strong> Adapted from Manguso et. al.&nbsp;(2017)</figcaption>
 </figure>
 </div>
+<p>Many <em>in vivo</em> CRISPR screens have been completed in the literature - however I will focus on <a href="https://www.nature.com/articles/nature23270#Abs1">this</a> one for this walkthrough. The CRISPR screens in this paper were conducted primarily by Rob Manguso, published in 2017 in <em>Nature</em>, and are notable for both their novelty at the time of their publication, and for their identification of <em>ptpn2</em> as a key immunotherapy target.</p>
+<p>From a bioinformatics perspective - the analysis of a CRISPR screen can be broken down into a number of steps:</p>
+<ol type="1">
+<li>Data collection - attaining the raw sequencing data, often in bcl or fastq format.</li>
+<li>Poolq - generating a matrix of counts per barcode and sample.</li>
+<li>Preprocessing - evaluating inital statistics as quality control measures and calculating log-fold-changes (LFCs).</li>
+<li>Significance calculations - applying the hypergeometric test or <a href="https://portals.broadinstitute.org/gpp/public/software/stars">STARS</a> to LFC data.</li>
+</ol>
+<p>These steps are reflective of what is currently standard practice in the Manguso lab at the Broad Institute as of March 2026, but these steps are flexible and there is a variety of tools available - a review of some approaches can be found <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8786280/#abstract1">here</a> (the most notable tool being <a href="https://sourceforge.net/p/mageck/wiki/Home/">MAGeCK</a>). That said, in this tutorial I will approach the analysis from the ground-up, relying on only basic Python libraries such as Pandas, in order to demonstrate a complete analysis pipeline.</p>
+<section id="step-1-data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-data-collection">Step 1: Data Collection</h2>
+<p>In this first step, I will collect data for one of the central screens in the paper, with results presented in figure 1.</p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="bWV0aG9kcyUyQ0NSSVNQUg==" data-listing-date-sort="1772946000000" data-listing-file-modified-sort="1773980275024" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="391">
-<a href="./posts/screening_pipeline/screening_pipeline.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/screening_pipeline/screening_concept.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-In Vivo CRISPR Screens - Analysis Walkthrough with Explanations
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWV0aG9kcw=='); return false;">methods</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q1JJU1BS'); return false;">CRISPR</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A walkthrough of a publication ready CRISPR screening pipeline using public data.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Aidan Cruickshank
-</div>
-<div class="listing-date">
-Mar 8, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
