@@ -1,6 +1,8 @@
 [
   {
     "listing": "/index.html",
-    "items": []
+    "items": [
+      "/posts/screening_pipeline/screening_pipeline.html"
+    ]
   }
 ]
