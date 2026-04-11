@@ -458,6 +458,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-3-preprocessing" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-preprocessing">Step 3: Preprocessing</h2>
+<p>The preprocessing step of the analysis pipeline can be boiled down to about three interconnected components:</p>
+<ol type="1">
+<li>Quality control - mainly off of the PoolQ data and through pearson correlations.</li>
+<li>Normalizing the data (ie. reads-per-million normalization, z-scoring, spline fitting).</li>
+<li>Sample wrangling - summing technical replicate, averaging biological replicates.</li>
+</ol>
+<p>I’ll define some functions below and we can get started with looing at the data. I must give credit to the computational associates both past and present in the Manguso lab, inclusing but not limited to Peter Du, Ashwin Kammula, Jonathan Perera, Sarah Kim, and Celeste Nobrega - all of whom contributed code we use in the lab for the analysis of screens, and which may show up in edited form here and there.</p>
+<div id="55a20bc7-a464-438b-aa7c-011423a81ed8" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some basic packages are needed.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>
