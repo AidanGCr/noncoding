@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://noncoding.io/index.html</loc>
-    <lastmod>2026-04-11T05:18:44.715Z</lastmod>
+    <lastmod>2026-04-20T15:19:37.078Z</lastmod>
   </url>
   <url>
     <loc>https://noncoding.io/posts/screening_pipeline/screening_pipeline.html</loc>
-    <lastmod>2026-04-11T05:18:44.716Z</lastmod>
+    <lastmod>2026-04-20T15:19:37.080Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noncoding.io/posts/sing_var_calc/screening_pipeline.html</loc>
+    <lastmod>2026-04-20T15:19:37.081Z</lastmod>
   </url>
   <url>
     <loc>https://noncoding.io/about.html</loc>
-    <lastmod>2026-04-11T05:18:44.714Z</lastmod>
+    <lastmod>2026-04-20T15:19:37.078Z</lastmod>
   </url>
 </urlset>

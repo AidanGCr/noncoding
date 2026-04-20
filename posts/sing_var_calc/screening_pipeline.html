@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aidan Cruickshank">
+<meta name="dcterms.date" content="2026-04-20">
+<meta name="description" content="A write up of my university notes from MATH 140 and MATH 141 at McGill University.">
 
-<title>Noncoding Blog</title>
+<title>Single Variable Calculus - A Review – Noncoding Blog</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,32 +26,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f7919f14b89ae9a431cba0b331f0b52b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e6ec55d50a8571276e9da61ff62941ed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-f7919f14b89ae9a431cba0b331f0b52b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f7919f14b89ae9a431cba0b331f0b52b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e6ec55d50a8571276e9da61ff62941ed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f7919f14b89ae9a431cba0b331f0b52b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,35 +112,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -136,7 +143,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -317,7 +324,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Noncoding Blog</span>
     </a>
   </div>
@@ -328,11 +335,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -360,26 +367,60 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q1JJU1BS">CRISPR <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Zm91bmRhdGlvbnM=">foundations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWF0aGVtYXRpY3M=">mathematics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0aG9kcw==">methods <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#single-variable-calculus---a-review" id="toc-single-variable-calculus---a-review" class="nav-link active" data-scroll-target="#single-variable-calculus---a-review">Single Variable Calculus - A Review</a>
+  <ul class="collapse">
+  <li><a href="#math-140---pre-midterm" id="toc-math-140---pre-midterm" class="nav-link" data-scroll-target="#math-140---pre-midterm">MATH 140 - Pre-Midterm</a>
+  <ul class="collapse">
+  <li><a href="#part-1-chapter-0---intro" id="toc-part-1-chapter-0---intro" class="nav-link" data-scroll-target="#part-1-chapter-0---intro">Part 1: Chapter 0 - Intro</a></li>
+  <li><a href="#part-1-chapter-1---limits" id="toc-part-1-chapter-1---limits" class="nav-link" data-scroll-target="#part-1-chapter-1---limits">Part 1: Chapter 1 - Limits</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Noncoding Blog</h1>
+<h1 class="title">Single Variable Calculus - A Review</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">foundations</div>
+    <div class="quarto-category">mathematics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A write up of my university notes from MATH 140 and MATH 141 at McGill University.
+  </div>
 </div>
 
 
+<div class="quarto-title-meta">
 
-<div class="quarto-title-meta column-page-left">
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aidan Cruickshank </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 20, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -389,114 +430,112 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to my personal blog! The goal of this blog is to have an outlet where I can put ideas and thoughts that are too small to be a published, or too under-cooked to be very widely distributed. The name of the blog was chosen to reflect this goal. Noncoding regions of the human genome are thought to be perhaps underinvestigated when considering their potential importance for cellular processes. For example, they house many pivotal regions such as cis-regulatory elements which are thought to strongly guide gene regulatory programs. However, in variant classification and prioritization, noncoding variants are often largely overlooked. As such, maybe the articles in this blog will function similarly - I do not know how useful the information may be, but perhaps it will be of outsized importance for some people, at some point!</p>
-<p>The main focus of this blog will be topics relating to bioinformatics, my main area of expertise. Most articles will revolve around technologies and methods relevant to genomics, cancer biology, immunology, and cancer immunology, with maybe a smattering of population genetics and personalized genomics in healthcare settings. Occasionally I might write about other things like video games, books, movies, or other hobbies. Thanks for visiting!</p>
-<div id="fig-banner" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-banner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="cres.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+<section id="single-variable-calculus---a-review" class="level1">
+<h1>Single Variable Calculus - A Review</h1>
+<p>This post will outline a general overview of single variable calculus as seen in my course notes for my two semester university program. Much of this will come from segments taken from the TA’s writings, and I will add some computational evaluations of the answers as well.</p>
+<div id="54834cbe-ae79-454f-942a-816ed2866db9" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-banner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: An overview of CREs, their association with gene expression, and epigenetic features which correlate with their presence - adapted from <a href="https://www.nature.com/articles/s41576-022-00509-1#Abs1">Preissl, Gaulton, &amp; Ren, <em>Nat Rev Genet</em> (2023)</a>
-</figcaption>
+<section id="math-140---pre-midterm" class="level2">
+<h2 class="anchored" data-anchor-id="math-140---pre-midterm">MATH 140 - Pre-Midterm</h2>
+<section id="part-1-chapter-0---intro" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-chapter-0---intro">Part 1: Chapter 0 - Intro</h3>
+<p>A function, <span class="math inline">\(y = f(x)\)</span> takes values <span class="math inline">\(x\)</span> from the domain <span class="math inline">\(D_f\)</span> and outputs values <span class="math inline">\(y\)</span> from the range <span class="math inline">\(R_f\)</span>. For each value $ x D_f$, there is only one corresponding value of <span class="math inline">\(y\)</span>.</p>
+<p><strong>Examples</strong>:</p>
+<ol type="1">
+<li>Consider <span class="math inline">\(f(x) = 1 / x\)</span>. Then we have that <span class="math inline">\(D_f = (-\inf; 0)\cup(0;+\inf) = \mathbb{R}\setminus\{0\}\)</span>. This means that for any <span class="math inline">\(x \in D_f\)</span> we can know the value of <span class="math inline">\(f(x)\)</span> simply by plugging in <span class="math inline">\(x\)</span> in the exponent of <span class="math inline">\(1/x\)</span>. However, if we look at the graph of <span class="math inline">\(f(x) = 1/x\)</span>, the four qustions arise:
+<ul>
+<li>What happens when <span class="math inline">\(x &gt; 0\)</span> gets closer and closer to 0? This is the idea behind taking the limit <span class="math inline">\(\lim_{x \to 0^+} f(x)\)</span>.</li>
+<li>What happens when <span class="math inline">\(x &lt; 0\)</span> gets closer and closer to 0? This is the idea behind taking the limit <span class="math inline">\(\lim_{x \to 0^-} f(x)\)</span>.</li>
+<li>What happens when <span class="math inline">\(x\)</span> gets larger and larger, more precisely infinitely large. This brings us to study <span class="math inline">\(\lim_{x \to +\inf} f(x)\)</span>.</li>
+<li>What about when <span class="math inline">\(x\)</span> gets infinitely negatively big? This leads to <span class="math inline">\(lim_{x \to -\inf} f(x)\)</span>.</li>
+</ul></li>
+</ol>
+<div id="542c1aad-8e09-45b3-af75-a51964d1836d" class="cell" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">1</span><span class="op">/</span>x</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="op">-</span><span class="fl">0.01</span>, <span class="dv">100</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plot of y = 1/x"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>Text(0.5, 1.0, 'Plot of y = 1/x')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="screening_pipeline_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Another example is <span class="math inline">\(f(x) = e^{1/x}/x^3\)</span> that has domain <span class="math inline">\(D_f = (-\inf;0)\cup(0;+\inf)\)</span>. We see that the exact same four questions arise when understanding what values of <span class="math inline">\(y\)</span> are in <span class="math inline">\(R_f\)</span>.</li>
+</ol>
+<div id="b2728288-4a4c-4f76-bb0e-1406a2a700ed" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: (math.e<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>x))<span class="op">/</span>(x<span class="op">**</span><span class="dv">3</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="fl">0.01</span>, <span class="dv">100</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> [yi <span class="op">&lt;</span> <span class="dv">10</span> <span class="cf">for</span> yi <span class="kw">in</span> y]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x[mask]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y[mask]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> [yi <span class="op">&lt;</span> <span class="dv">10</span> <span class="cf">for</span> yi <span class="kw">in</span> y]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x[mask]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y[mask]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plot of y = e^(1/x)/x^3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>Text(0.5, 1.0, 'Plot of y = e^(1/x)/x^3')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="screening_pipeline_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="part-1-chapter-1---limits" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-chapter-1---limits">Part 1: Chapter 1 - Limits</h3>
+<section id="section-1---limits-at-finite-values-of-x-and-vertical-asymptotes" class="level4">
+<h4 class="anchored" data-anchor-id="section-1---limits-at-finite-values-of-x-and-vertical-asymptotes">Section 1 - Limits at finite values of <span class="math inline">\(x\)</span> and vertical asymptotes</h4>
+<p>Here we study limits of the type <span class="math inline">\(\lim_{x \to c^+} f(x)\)</span> and <span class="math inline">\(\lim_{x \to c^-} f(x)\)</span> where <span class="math inline">\(c\)</span> may or may not be in <span class="math inline">\(D_f\)</span>.</p>
+<p><strong>Exercises</strong>:</p>
+<ol type="1">
+<li>Consider <span class="math inline">\(f(x) = x^2 - 2x + 1 / x - 1\)</span>
+<ul>
+<li>What’s <span class="math inline">\(f(1)\)</span>?</li>
+<li>What’s <span class="math inline">\(\lim_{x \to 1^+} f(x)\)</span></li>
+<li>What’s <span class="math inline">\(\lim_{x \to 1^-} f(x)\)</span></li>
+</ul></li>
+</ol>
+<p>Solution:</p>
 
 
+</section>
+</section>
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Zm91bmRhdGlvbnMlMkNtYXRoZW1hdGljcw==" data-listing-date-sort="1776643200000" data-listing-file-modified-sort="1776698377081" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="355">
-<a href="./posts/sing_var_calc/screening_pipeline.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/sing_var_calc/svc.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Single Variable Calculus - A Review
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zm91bmRhdGlvbnM='); return false;">foundations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aGVtYXRpY3M='); return false;">mathematics</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A write up of my university notes from MATH 140 and MATH 141 at McGill University.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Aidan Cruickshank
-</div>
-<div class="listing-date">
-Apr 20, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="bWV0aG9kcyUyQ0NSSVNQUg==" data-listing-date-sort="1772928000000" data-listing-file-modified-sort="1776698377080" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1198">
-<a href="./posts/screening_pipeline/screening_pipeline.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/screening_pipeline/screening_concept.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-In Vivo CRISPR Screens - Analysis Walkthrough with Explanations
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWV0aG9kcw=='); return false;">methods</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q1JJU1BS'); return false;">CRISPR</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A walkthrough of a publication ready CRISPR screening pipeline using public data.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Aidan Cruickshank
-</div>
-<div class="listing-date">
-Mar 8, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
