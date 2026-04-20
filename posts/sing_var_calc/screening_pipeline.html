@@ -620,6 +620,59 @@ f(x) &amp;= \frac{(x - 2)(x + 3)}{\lvert x - 2 \rvert}
 </div>
 </div>
 </div>
+<ol start="6" type="1">
+<li>Consider the function <span class="math inline">\(f(x) = \frac{1}{2 - x}(\frac{\sqrt{x + 2}}{\sqrt{x - 1}} - 2)\)</span>, does <span class="math inline">\(\lim_{x \to 2} f(x)\)</span> exist?</li>
+</ol>
+<p><em>Solution</em>:<br>
+To begin, <span class="math inline">\(f(2)\)</span> is undefined. We can simplify <span class="math inline">\(f(x)\)</span> as follows: <span class="math display">\[
+\begin{align}
+f(x) &amp;= \frac{1}{2 - x}(\frac{\sqrt{x + 2}}{\sqrt{x - 1}} - 2) \\
+&amp;= \frac{1}{2 - x}(\frac{\sqrt{x + 2} -2\sqrt{x - 1}}{\sqrt{x - 1}}) \\
+&amp;= \frac{1}{2 - x}(\frac{\sqrt{x + 2} -2\sqrt{x - 1}}{\sqrt{x - 1}})(\frac{\sqrt{x + 2} +2\sqrt{x - 1}}{\sqrt{x + 2} +2\sqrt{x - 1}}) \\
+&amp;= \frac{1}{2 - x}(\frac{-3x - 6}{\sqrt{x - 1}(\sqrt{x + 2} +2\sqrt{x - 1}}) \\
+&amp;= \frac{3(2 - x)}{2 - x}(\frac{1}{\sqrt{x - 1}(\sqrt{x + 2} + 2\sqrt{x - 1})} \\
+&amp;= \frac{3}{\sqrt{x - 1}(\sqrt{x + 2} + 2\sqrt{x - 1})} \\
+\end{align}
+\]</span> Now, from this we can see that <span class="math inline">\(\lim_{x \to 2} f(x) = \frac{3}{4}\)</span> since the function is now defined at <span class="math inline">\(x = 2\)</span>. This limit is the same on both sides of <span class="math inline">\(x = 2\)</span> so the limit exists.</p>
+<ol start="7" type="1">
+<li>Prove or disprove that <span class="math inline">\(f(x) = \begin{cases} \frac{1}{x} - \frac{1}{\lvert x \rvert} , &amp; \text{ if} x \neq0 \\ 0, &amp; \text{if } x = 0 \end{cases}\)</span> , is continuous at <span class="math inline">\(x = 0\)</span>.</li>
+</ol>
+<p><em>Solution</em>:<br>
+At <span class="math inline">\(x = 0\)</span> it is clear that <span class="math inline">\(f(x) = 0\)</span> so all that needs to be defined is that <span class="math inline">\(\lim_{x \to 0^+} f(x) = \lim_{x \to 0^-} f(x) = 0\)</span>. For <span class="math inline">\(x &gt; 0\)</span> we have that <span class="math inline">\(f(x) = 0\)</span> because <span class="math inline">\(\lvert x \rvert\)</span> will be the same as <span class="math inline">\(x\)</span> for all <span class="math inline">\(x\)</span>. For <span class="math inline">\(x &lt; 0\)</span> we have that <span class="math inline">\(\lim_{x \to 0^-} f(x) = \frac{1}{0^-} - \frac{1}{0^+} = -\inf\)</span>. This means the limit does not exist, and the function is not continuous at <span class="math inline">\(x = 0\)</span>.</p>
+<div id="4d88e8fc-76b9-486c-a077-ed300b9c217b" class="cell" data-execution_count="66">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: (<span class="dv">1</span><span class="op">/</span>x) <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="bu">abs</span>(x)) <span class="cf">if</span> x <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="op">-</span><span class="fl">0.01</span>, <span class="dv">100</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> [yi <span class="op">&gt;</span> <span class="op">-</span><span class="dv">10</span> <span class="cf">for</span> yi <span class="kw">in</span> y]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> x[mask], y[mask]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x])</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> [yi <span class="op">&gt;</span> <span class="op">-</span><span class="dv">10</span> <span class="cf">for</span> yi <span class="kw">in</span> y]</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> x[mask], y[mask]</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plot of exercise (7) function"</span>)<span class="op">;</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="screening_pipeline_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Use the <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-limits-new/ab-1-8/v/squeeze-sandwich-theorem">squeeze theorem</a> to show that <span class="math inline">\(\lim_{t \to 0} t*\cos(1/t) = 0\)</span>.</li>
+</ol>
+<p><em>Solution</em>:<br>
+Coming soon!</p>
 
 
 </section>
