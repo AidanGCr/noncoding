@@ -433,7 +433,7 @@ window.Quarto = {
 <section id="single-variable-calculus---a-review" class="level1">
 <h1>Single Variable Calculus - A Review</h1>
 <p>This post will outline a general overview of single variable calculus as seen in my course notes for my two semester university program. Much of this will come from segments taken from the TA’s writings, and I will add some computational evaluations of the answers as well.</p>
-<div id="54834cbe-ae79-454f-942a-816ed2866db9" class="cell" data-execution_count="30">
+<div id="54834cbe-ae79-454f-942a-816ed2866db9" class="cell" data-execution_count="56">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
@@ -456,7 +456,7 @@ window.Quarto = {
 <li>What about when <span class="math inline">\(x\)</span> gets infinitely negatively big? This leads to <span class="math inline">\(lim_{x \to -\inf} f(x)\)</span>.</li>
 </ul></li>
 </ol>
-<div id="542c1aad-8e09-45b3-af75-a51964d1836d" class="cell" data-execution_count="43">
+<div id="542c1aad-8e09-45b3-af75-a51964d1836d" class="cell" data-execution_count="57">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">1</span><span class="op">/</span>x</span>
@@ -484,7 +484,7 @@ window.Quarto = {
 <ol start="2" type="1">
 <li>Another example is <span class="math inline">\(f(x) = e^{1/x}/x^3\)</span> that has domain <span class="math inline">\(D_f = (-\inf;0)\cup(0;+\inf)\)</span>. We see that the exact same four questions arise when understanding what values of <span class="math inline">\(y\)</span> are in <span class="math inline">\(R_f\)</span>.</li>
 </ol>
-<div id="b2728288-4a4c-4f76-bb0e-1406a2a700ed" class="cell" data-execution_count="44">
+<div id="b2728288-4a4c-4f76-bb0e-1406a2a700ed" class="cell" data-execution_count="58">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: (math.e<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>x))<span class="op">/</span>(x<span class="op">**</span><span class="dv">3</span>)</span>
@@ -521,7 +521,15 @@ window.Quarto = {
 <section id="section-1---limits-at-finite-values-of-x-and-vertical-asymptotes" class="level4">
 <h4 class="anchored" data-anchor-id="section-1---limits-at-finite-values-of-x-and-vertical-asymptotes">Section 1 - Limits at finite values of <span class="math inline">\(x\)</span> and vertical asymptotes</h4>
 <p>Here we study limits of the type <span class="math inline">\(\lim_{x \to c^+} f(x)\)</span> and <span class="math inline">\(\lim_{x \to c^-} f(x)\)</span> where <span class="math inline">\(c\)</span> may or may not be in <span class="math inline">\(D_f\)</span>.</p>
-<p><strong>Exercises</strong>: 1) Consider <span class="math inline">\(f(x) = x^2 - 2x + 1 / x - 1\)</span> * What’s <span class="math inline">\(f(1)\)</span>? * What’s <span class="math inline">\(\lim_{x \to 1^+} f(x)\)</span> * What’s <span class="math inline">\(\lim_{x \to 1^-} f(x)\)</span></p>
+<p><strong>Exercises</strong>:</p>
+<ol type="1">
+<li>Consider <span class="math inline">\(f(x) = x^2 - 2x + 1 / x - 1\)</span>
+<ul>
+<li>What’s <span class="math inline">\(f(1)\)</span>?</li>
+<li>What’s <span class="math inline">\(\lim_{x \to 1^+} f(x)\)</span></li>
+<li>What’s <span class="math inline">\(\lim_{x \to 1^-} f(x)\)</span></li>
+</ul></li>
+</ol>
 <p><em>Solution</em>:<br>
 a) <span class="math inline">\(f(1)\)</span> is undefined - there is a division by 0.<br>
 b) We can simplify <span class="math inline">\(f(x)\)</span> to <span class="math inline">\(f(x) = (x - 1)^2/x - 1 = x - 1\)</span> so, <span class="math inline">\(\lim_{x \to 0^+} f(x) = 0^+\)</span>.<br>
@@ -529,7 +537,10 @@ c) We see the opposite side of the above (b) answer.</p>
 <p><strong>Definition</strong>: Given <span class="math inline">\(c\)</span> (not necessarily in <span class="math inline">\(D_f\)</span>) we say that the limit <span class="math inline">\(\lim_{x \to c} f(x)\)</span> <em>exists</em> if and only if <span class="math inline">\(\lim_{x \to c^+} f(x) = \lim_{x \to c^-} f(x)\)</span>. Moreover, in this case <span class="math inline">\(\lim_{x \to c^+} f(x) = \lim_{x \to c} f(x) = \lim_{x \to c^-} f(x)\)</span>.</p>
 <p><strong>Definition</strong>: Given <span class="math inline">\(c \in D_f\)</span> then <span class="math inline">\(f(x)\)</span> is <em>continuous</em> at <span class="math inline">\(x = c\)</span> if <span class="math inline">\(\lim_{x \to c} f(x)\)</span> exists and <span class="math inline">\(\lim_{x \to c} f(x) = f(c)\)</span>.</p>
 <p>If <span class="math inline">\(f(x)\)</span> is continuous at <span class="math inline">\(x = c\)</span> then we can put the limit inside the function, i.e <span class="math inline">\(\lim_{x \to c} f(x) = f(\lim_{x \to c} x)\)</span>. This is especially useful when we have a composition of functions <span class="math inline">\(f(g(x))\)</span>: if <span class="math inline">\(f\)</span> is continuous then <span class="math inline">\(\lim_{x \to c} f(g(x)) = f(\lim_{x \to c} g(x))\)</span>.</p>
-<p><strong>Exercises</strong>: 1) Does <span class="math inline">\(\lim_{x \to 1} f(x)\)</span> exist, where <span class="math inline">\(f(x) = x^2 - 1 / x - 1\)</span> ?</p>
+<p><strong>Exercises</strong>:</p>
+<ol type="1">
+<li>Does <span class="math inline">\(\lim_{x \to 1} f(x)\)</span> exist, where <span class="math inline">\(f(x) = x^2 - 1 / x - 1\)</span> ?</li>
+</ol>
 <p><em>Solution</em>:<br>
 This function can be simplified down to: <span class="math display">\[\begin{aligned} f(x) &amp;= (x - 1)(x + 1)/x - 1 \\ &amp;= x + 1 \end{aligned}\]</span> So, <span class="math inline">\(\lim_{x \to 1^+} f(x) = 2^+\)</span> and <span class="math inline">\(\lim_{x \to 1^-} f(x) = 2^-\)</span> meaning <span class="math inline">\(\lim_{x \to 1^+} f(x) = \lim_{x \to 1^-} f(x)\)</span> thus the limit exists and the function is cxontinuous at <span class="math inline">\(x = 1\)</span>.</p>
 <ol start="2" type="1">
@@ -582,7 +593,7 @@ f(x) &amp;= = \frac{x^2 +x -6}{\lvert x - 2 \rvert} \\
 f(x) &amp;= \frac{(x - 2)(x + 3)}{\lvert x - 2 \rvert}
 \end{align}
 \]</span> Now, taking <span class="math inline">\(\lim_{x \to 2^+} f(x) = \lim_{x \to 2^+} x + 3 = 5\)</span>. However, in the other direction, <span class="math inline">\(\lim_{x \to 2^-} f(x) = -5\)</span>. This is because <span class="math inline">\(x - 2\)</span> is only the same as <span class="math inline">\(\lvert x - 2 \rvert\)</span> when <span class="math inline">\(x &gt; 2\)</span>. As such, the function is not continuous at <span class="math inline">\(x = 2\)</span> and the limit <em>does not exist</em>.</p>
-<div id="70230634-fb88-4e19-a486-75521d69811f" class="cell" data-execution_count="54">
+<div id="70230634-fb88-4e19-a486-75521d69811f" class="cell" data-execution_count="59">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: (x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> x <span class="op">-</span><span class="dv">6</span>) <span class="op">/</span> <span class="bu">abs</span>(x <span class="op">-</span> <span class="dv">2</span>)</span>
@@ -599,15 +610,12 @@ f(x) &amp;= \frac{(x - 2)(x + 3)}{\lvert x - 2 \rvert}
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plot of y = (x^2+x-6)/|x-2|"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plot of y = (x^2+x-6)/|x-2|"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="54">
-<pre><code>Text(0.5, 1.0, 'Plot of y = (x^2+x-6)/|x-2|')</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="screening_pipeline_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="screening_pipeline_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
