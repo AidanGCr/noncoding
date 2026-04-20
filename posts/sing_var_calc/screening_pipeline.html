@@ -672,7 +672,71 @@ At <span class="math inline">\(x = 0\)</span> it is clear that <span class="math
 <li>Use the <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-limits-new/ab-1-8/v/squeeze-sandwich-theorem">squeeze theorem</a> to show that <span class="math inline">\(\lim_{t \to 0} t*\cos(1/t) = 0\)</span>.</li>
 </ol>
 <p><em>Solution</em>:<br>
-Coming soon!</p>
+First, note that the limit <span class="math inline">\(\lim_{t \to 0} \cos(1/t)\)</span> does not exist. As such we cannot put the limit inside the function and solve that way.</p>
+<div id="c2d2ae99-66f1-43d6-909e-1a090750abd4" class="cell" data-execution_count="74">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: math.cos(<span class="dv">1</span><span class="op">/</span>x)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="fl">0.01</span>, <span class="dv">100</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plot of y = cos(1/x) function"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [math.cos(xi) <span class="cf">for</span> xi <span class="kw">in</span> x]</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Plot of y = cos(x) function"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="screening_pipeline_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="screening_pipeline_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We know that <span class="math inline">\(-1 \leq \cos(x) \leq 1\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, so <span class="math inline">\(-1 \leq cos(1/t) \leq 1\)</span> for every <span class="math inline">\(t \in \mathbb{R}\setminus{\{0\}}\)</span>. Now for every <span class="math inline">\(t \geq 0\)</span> we have that <span class="math inline">\(-t \leq t\cos(1/t) \leq t\)</span> <em>(inequality 1)</em>. However, for <span class="math inline">\(t \lt 0\)</span>, we would be changing the direction of the inequalities, so we have to be a bit careful. Tackling them seperately:</p>
+<p>Left side:<br>
+<span class="math inline">\(-1 \leq \cos(1/t)\)</span> - Multiplying by <span class="math inline">\(t \lt 0\)</span><br>
+<span class="math inline">\(-t \geq t*\cos(1/t)\)</span></p>
+<p>Right side:<br>
+<span class="math inline">\(\cos(1/t) \leq 1\)</span> - Multiplying by <span class="math inline">\(t \lt 0\)</span><br>
+<span class="math inline">\(t*\cos(1/t) \geq t\)</span></p>
+<p>Putting them back together gives: <span class="math inline">\(-t \geq t*\cos(1/t) \geq t\)</span> for any <span class="math inline">\(t \lt 0\)</span> <em>(inequality 2)</em>. Using inequality 1, we can use the squeeze theorem to share that <span class="math inline">\(\lim_{t \to 0^+} t*\cos(1/t)\)</span> satisfies: <span class="math display">\[
+\begin{align}
+\lim_{t \to 0^+} -t \leq &amp;\lim_{t \to 0^+} t*\cos(1/t) \leq \lim_{t \to 0^+} t \\
+0 \leq &amp;\lim_{t \to 0^+} t*\cos(1/t) \leq 0
+\end{align}
+\]</span> So, <span class="math inline">\(\lim_{t \to 0^+} t*\cos(1/t) = 0\)</span>. Using inequality 2, we can so the same process to find: <span class="math display">\[
+\begin{align}
+\lim_{t \to 0^-} -t \geq &amp;\lim_{t \to 0^-} t*\cos(1/t) \geq \lim_{t \to 0^-} t \\
+0 \geq &amp;\lim_{t \to 0^-} t*\cos(1/t) \geq 0
+\end{align}
+\]</span> So, <span class="math inline">\(\lim_{t \to 0^-} t*\cos(1/t) = 0\)</span>. In conclusion, <span class="math inline">\(\lim_{t \to 0^+} t*\cos(1/t) = \lim_{t \to 0^-} t*\cos(1/t) = 0\)</span> and thus, <span class="math inline">\(\lim_{t \to 0} t*\cos(1/t) = 0\)</span>.</p>
+<ol start="9" type="1">
+<li>Compute the limit <span class="math inline">\(\lim_{x \to 0} x^2*e^{\sin(\frac{1}{x})}\)</span></li>
+</ol>
+<p><em>Solution</em>:<br>
+Again, we will use the squeeze theorem.</p>
+<p>To be continued!!!</p>
 
 
 </section>
