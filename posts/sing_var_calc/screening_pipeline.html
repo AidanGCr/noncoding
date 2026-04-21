@@ -720,12 +720,12 @@ First, note that the limit <span class="math inline">\(\lim_{t \to 0} \cos(1/t)\
 <p>Right side:<br>
 <span class="math inline">\(\cos(1/t) \leq 1\)</span> - Multiplying by <span class="math inline">\(t \lt 0\)</span><br>
 <span class="math inline">\(t*\cos(1/t) \geq t\)</span></p>
-<p>Putting them back together gives: <span class="math inline">\(-t \geq t*\cos(1/t) \geq t\)</span> for any <span class="math inline">\(t \lt 0\)</span> <em>(inequality 2)</em>. Using inequality 1, we can use the squeeze theorem to share that <span class="math inline">\(\lim_{t \to 0^+} t*\cos(1/t)\)</span> satisfies: <span class="math display">\[
+<p>Putting them back together gives: <span class="math inline">\(-t \geq t*\cos(1/t) \geq t\)</span> for any <span class="math inline">\(t \lt 0\)</span> <em>(inequality 2)</em>. Using inequality 1, we can use the squeeze theorem to show that <span class="math inline">\(\lim_{t \to 0^+} t*\cos(1/t)\)</span> satisfies: <span class="math display">\[
 \begin{align}
 \lim_{t \to 0^+} -t \leq &amp;\lim_{t \to 0^+} t*\cos(1/t) \leq \lim_{t \to 0^+} t \\
 0 \leq &amp;\lim_{t \to 0^+} t*\cos(1/t) \leq 0
 \end{align}
-\]</span> So, <span class="math inline">\(\lim_{t \to 0^+} t*\cos(1/t) = 0\)</span>. Using inequality 2, we can so the same process to find: <span class="math display">\[
+\]</span> So, <span class="math inline">\(\lim_{t \to 0^+} t*\cos(1/t) = 0\)</span>. Using inequality 2, we can use the same process to find: <span class="math display">\[
 \begin{align}
 \lim_{t \to 0^-} -t \geq &amp;\lim_{t \to 0^-} t*\cos(1/t) \geq \lim_{t \to 0^-} t \\
 0 \geq &amp;\lim_{t \to 0^-} t*\cos(1/t) \geq 0
@@ -735,8 +735,29 @@ First, note that the limit <span class="math inline">\(\lim_{t \to 0} \cos(1/t)\
 <li>Compute the limit <span class="math inline">\(\lim_{x \to 0} x^2*e^{\sin(\frac{1}{x})}\)</span></li>
 </ol>
 <p><em>Solution</em>:<br>
-Again, we will use the squeeze theorem.</p>
-<p>To be continued!!!</p>
+Again, we will use the squeeze theorem - we can apply it in much the same way as we did above. First, we know that <span class="math inline">\(-1 \leq \sin(z) \leq 1\)</span> for all <span class="math inline">\(z \in \mathbb{R}\)</span>. This means that <span class="math inline">\(e^{-1} \leq e^{\sin(z)} \leq e^1\)</span>. We can now substitute in <span class="math inline">\(1/x\)</span> for <span class="math inline">\(z\)</span>, and limit the domain to <span class="math inline">\(D_f = \mathbb{R} \setminus{\{0\}}\)</span>. Furthermore, <span class="math inline">\(x^2\)</span> is positive for all <span class="math inline">\(x \in \mathbb{R}\)</span> meaning that we don’t have to worry about altering the ineqaulities improperly for the limit approaching 0 from each side. This means that: <span class="math display">\[
+\begin{align}
+\frac{x^2}{e} \leq x^2 * \sin(1/x) \leq ex^2 \\
+0 \leq x^2 * \sin(1/x) \leq 0 \\
+\end{align}
+\]</span> So, <span class="math inline">\(\lim_{x \to 0} x^2*\sin(1/x) = 0\)</span>.</p>
+<ol start="10" type="1">
+<li>Compute the limit <span class="math inline">\(\lim_{x \to 0} \cos(x^2 * e^{\sin(1/x)})\)</span>.</li>
+</ol>
+<p><em>Solution</em>:<br>
+The solution to this problem comes easily as the work has mostly been done in the other problems! The cosine function is continuous at 0 (see above plot), so we can simply move the limit into the function. Then we are computing <span class="math inline">\(\cos(\lim_{x \to 0} x^2*e^{\sin(1/x)})\)</span>, which based on our prior work simplifies to <span class="math inline">\(\cos(0)\)</span> which is 1.</p>
+<ol start="11" type="1">
+<li>What values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> make <span class="math inline">\(f(x)\)</span> continuous on <span class="math inline">\(\mathbb{R}\)</span>? Define <span class="math inline">\(f(x)\)</span> as: <span class="math display">\[
+f(x) =
+\begin{cases}
+\frac{x^2 - 4}{x - 2}, &amp; x &lt; 2 \\
+ax^2 - bx + 3, &amp; 2 \leq x \lt 3 \\
+2x - a + b, &amp; x \geq 3
+\end{cases}
+\]</span></li>
+</ol>
+<p><em>Solution</em>:<br>
+Coming soon!</p>
 
 
 </section>
